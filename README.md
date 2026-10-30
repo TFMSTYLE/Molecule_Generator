@@ -3,7 +3,7 @@
 ![molecule-thumb](https://github.com/user-attachments/assets/70886d9a-f2bc-4e4b-ac66-b579ab3bf562)
 
 **Author:** The French Monkey (TFMSTYLE)  
-**Version:** 1.0.0  
+**Version:** 1.0.1  
 
 ---
 
@@ -92,3 +92,21 @@ Automatically applies element-based coloring and material assignment.
 - Each atom is colored automatically based on its element (H, C, N, O, S, etc.).  
 - Use Blender’s **Auto Smooth** or modifiers for refined visual results.  
 - Presets are simplified and intended for visualization — not for chemical accuracy or measurement.
+
+---
+
+## Install
+
+Needs Blender 4.2 or later. Get the zip from [tfmstyle.com](https://tfmstyle.com), then in Blender open Edit > Preferences > Get Extensions, open the menu at the top right and pick Install from Disk.
+
+To build the zip yourself, run this in the repo folder:
+
+```bash
+blender --command extension build
+```
+
+---
+
+## License
+
+GPL 3.0 or later. See [LICENSE](LICENSE).
