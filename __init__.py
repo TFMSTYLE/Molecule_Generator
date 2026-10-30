@@ -4,7 +4,7 @@
 bl_info = {
     "name": "Molecule",
     "author": "The French Monkey",
-    "version": (1, 0, 1),
+    "version": (1, 0, 2),
     "blender": (4, 2, 0),
     "location": "View3D > Sidebar > Molecule",
     "description": "Generate molecules",
@@ -15,6 +15,11 @@ bl_info = {
 import bpy, bmesh, math
 from math import sin, cos
 from mathutils import Vector, Matrix
+
+try:
+    from . import relay_updater
+except ImportError:  # the Addon Collection has its own updates
+    relay_updater = None
 
 # ------------------------------------------------------------------------
 # Element data 
@@ -1140,6 +1145,8 @@ class VIEW3D_PT_molecule_generator(bpy.types.Panel):
     bl_category = "Molecule" 
 
     def draw(self, context):
+        if relay_updater:
+            relay_updater.draw(self.layout)
         layout = self.layout
         p = context.scene.molgen_props
         o = context.object
@@ -1187,6 +1194,8 @@ classes = (
 )
 
 def register():
+    if relay_updater:
+        relay_updater.register("blender-molecule")
     for c in classes:
         try:
             bpy.utils.register_class(c)
@@ -1195,6 +1204,8 @@ def register():
     bpy.types.Scene.molgen_props = bpy.props.PointerProperty(type=MoleculeGenProperties)
 
 def unregister():
+    if relay_updater:
+        relay_updater.unregister()
     for c in reversed(classes):
         try:
             bpy.utils.unregister_class(c)
