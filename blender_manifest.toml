@@ -1,7 +1,7 @@
 schema_version = "1.0.0"
 
 id = "tfmstyle_molecule"
-version = "1.0.3"
+version = "1.0.4"
 name = "TFMSTYLE - Molecule"
 tagline = "Generate molecules"
 maintainer = "The French Monkey"
